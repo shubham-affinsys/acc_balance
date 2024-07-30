@@ -42,7 +42,10 @@ def get_all_users():
 
 @app.get("/users/{user_id}")
 def get_user(user_id:str):
-    return users_by_id[user_id]
+    for usr in users_by_id.keys():
+        if usr==user_id:
+            return usr
+    raise HTTPException(status_code=404,detail="user not found")
 
 @app.get("/accounts/{account_number}")
 def get_balance(account_number: str):
