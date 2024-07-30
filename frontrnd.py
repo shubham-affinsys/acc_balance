@@ -1,5 +1,7 @@
-import requests
-url = "http://127.0.0.1:8000/accounts/"
+import requests    
+url = f"https://acc-balance.vercel.app/accounts/{1004}"
 response = requests.get(url)
-print(response.json())
 
+data = response.json()
+slot_balance = data["balance"]
+print(slot_balance)

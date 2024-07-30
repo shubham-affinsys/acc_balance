@@ -14,49 +14,12 @@ app.add_middleware(
 )
 
 # In-memory data store
-accounts = [
-    {
-        "title": "101xxxx1001",
-        "account_no": "1001",
-        "balance": 892322.03,
-        "payload": 1001,
-        "type": "payload"
-    },
-    {
-        "title": "101xxxx1002",
-        "account_no": "1002",
-        "balance": 4363.02,
-        "payload": 1002,
-        "type": "payload"
-    },
-    {
-        "title": "101xxxx1003",
-        "account_no": "1003",
-        "balance": 4662.02,
-        "payload": 1003,
-        "type": "payload"
-    },
-    {
-        "title": "101xxxx1004",
-        "account_no": "1004",
-        "balance": 8903.56,
-        "payload": 1004,
-        "type": "payload"
-    },
-    {
-        "title": "101xxxx1005",
-        "account_no": "1005",
-        "balance": 234.4,
-        "payload": 1005,
-        "type": "payload"
-    },
-    {
-        "title": "101xxxx1006",
-        "account_no": "1006",
-        "balance": 765.54,
-        "payload": 1006,
-        "type": "payload"
-    },
+accounts =  [
+    {"account_no": "HDFC10009234556", "balance": 500.75},
+    {"account_no": "SBI00094567291", "balance": 1500.20},
+    {"account_no": "YES10008282626", "balance": 250.00},
+    {"account_no": "ACC10007802727", "balance": 3200.45},
+    {"account_no": "KTK10098373628", "balance": 780.80}
 ]
 
 class Account(BaseModel):
@@ -73,6 +36,9 @@ def get_balance(account_number: str):
             return {"account_number": account_number, "balance": account["balance"]}
     raise HTTPException(status_code=404, detail="Account not found")
 
+
+
+# create new account not using it
 @app.post("/accounts/{account_number}")
 def create_account(account_number: str, account: Account):
     if any(acc["account_no"] == account_number for acc in accounts):
