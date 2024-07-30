@@ -28,8 +28,8 @@ def get_all_accounts():
     for usr in users_by_id:
         accs = users_by_id[usr]["accounts"]
         for acc in accs:
-            yield(acc)
-
+            all_accs.append(acc)
+    return all_accs
 
 @app.get("/accounts/{account_number}")
 def get_balance(account_number: str):
