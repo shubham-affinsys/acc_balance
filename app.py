@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
-//deployed on https://acc-balance.vercel.app/
+#deployed on https://acc-balance.vercel.app/
 app = FastAPI()
 
 app.add_middleware(
