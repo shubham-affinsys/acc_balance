@@ -27,8 +27,9 @@ def get_all_accounts():
     all_accs = []
     for usr in users_by_id:
         accs = users_by_id[usr]["accounts"]
-        for acc in accs:
-            all_accs.append(acc)
+        # for acc in accs:
+        #     all_accs.append(acc)
+        all_accs.append(accs)
     return all_accs
 
 @app.get("/users")
