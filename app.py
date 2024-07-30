@@ -4,7 +4,6 @@ from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
 #deployed on https://acc-balance.vercel.app/
 app = FastAPI()
-import xmltodict
 
 app.add_middleware(
     CORSMiddleware,
@@ -15,48 +14,24 @@ app.add_middleware(
 )
 
 # In-memory data store
-# accounts =  [
-#     {"account_number": "HDFC10009234556", "balance": 500.75},
-#     {"account_number": "SBI00094567291", "balance": 1500.20},
-#     {"account_number": "YES10008282626", "balance": 250.00},
-#     {"account_number": "ACC10007802727", "balance": 3200.45},
-#     {"account_number": "KTK10098373628", "balance": 780.80}
-# ]
-
-accounts="""<accounts>
-    <account>
-        <account_number>HDFC10009234556</account_number>
-        <balance>500.75</balance>
-    </account>
-    <account>
-        <account_number>SBI00094567291</account_number>
-        <balance>1500.20</balance>
-    </account>
-    <account>
-        <account_number>YES10008282626</account_number>
-        <balance>250.00</balance>
-    </account>
-    <account>
-        <account_number>ACC10007802727</account_number>
-        <balance>3200.45</balance>
-    </account>
-    <account>
-        <account_number>KTK10098373628</account_number>
-        <balance>780.80</balance>
-    </account>
-</accounts>
-"""
+accounts =  [
+    {"account_number": "HDFC10009234556", "balance": 500.75},
+    {"account_number": "SBI00094567291", "balance": 1500.20},
+    {"account_number": "YES10008282626", "balance": 250.00},
+    {"account_number": "ACC10007802727", "balance": 3200.45},
+    {"account_number": "KTK10098373628", "balance": 780.80}
+]
 
 class Account(BaseModel):
     balance: float
 
 @app.get("/accounts")
 def get_all_accounts():
-    return xmltodict(accounts)
+    return accounts
 
 @app.get("/accounts/{account_number}")
 def get_balance(account_number: str):
-    for account in xmltodict(accounts):
+    for account in accounts:
         if account["account_number"] == account_number:
             return {"account_number": account_number, "balance": account["balance"]}
     raise HTTPException(status_code=404, detail="Account not found")
