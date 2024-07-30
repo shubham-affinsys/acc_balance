@@ -1,22 +1,20 @@
 import requests    
 import pprint
-url = f"https://acc-balance.vercel.app/accounts/"
-response = requests.get(url)
 
-data = response.json()
+url = f"https://acc-balance.vercel.app/users/user_id_1"
+response = requests.get(url).json()
+
 accounts=[]
-for data_acc in data:
-    account=dict()
-    account["title"] = data_acc["account_number"]
-    account["balance"] = data_acc["balance"]
-    account["payload"] = data_acc["account_number"]
-
+for acc in response["accounts"]:
+    account = dict()
+    account["title"] = acc
+    account["payload"] = acc
+    account["balance"] = response["accounts"][acc]["balance"]
+    #adding account to list
     accounts.append(account)
 
 pprint.pprint(accounts)
-
-
-
+# pprint.pprint(accounts)
     #make request to server to get account balance 
     #account balnce is already stored in slot_accounts
     # try:

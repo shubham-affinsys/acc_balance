@@ -44,8 +44,9 @@ account_to_user_id={
     "SBI0475985847842":"user_id_2"
 }
 
-
-for usr in users_by_id:
-        accs = users_by_id[usr]["accounts"]
-        for acc in accs:
-            print(acc)
+# import pprint
+# all_accs = []
+# for usr in users_by_id:
+#     ussr = users_by_id[usr]
+#     all_accs.append(ussr["accounts"])
+# pprint.pprint(all_accs)
