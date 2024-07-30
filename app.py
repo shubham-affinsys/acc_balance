@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
-
+//deployed on https://acc-balance.vercel.app/
 app = FastAPI()
 
 app.add_middleware(
@@ -25,8 +25,36 @@ accounts = [
     {
         "title": "101xxxx1002",
         "account_no": "1002",
-        "balance": 90233.02,
+        "balance": 4363.02,
         "payload": 1002,
+        "type": "payload"
+    },
+    {
+        "title": "101xxxx1003",
+        "account_no": "1003",
+        "balance": 4662.02,
+        "payload": 1003,
+        "type": "payload"
+    },
+    {
+        "title": "101xxxx1004",
+        "account_no": "1004",
+        "balance": 8903.56,
+        "payload": 1004,
+        "type": "payload"
+    },
+    {
+        "title": "101xxxx1005",
+        "account_no": "1005",
+        "balance": 234.4,
+        "payload": 1005,
+        "type": "payload"
+    },
+    {
+        "title": "101xxxx1006",
+        "account_no": "1006",
+        "balance": 765.54,
+        "payload": 1006,
         "type": "payload"
     },
 ]
