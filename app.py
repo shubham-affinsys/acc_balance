@@ -15,11 +15,11 @@ app.add_middleware(
 
 # In-memory data store
 accounts =  [
-    {"account_no": "HDFC10009234556", "balance": 500.75},
-    {"account_no": "SBI00094567291", "balance": 1500.20},
-    {"account_no": "YES10008282626", "balance": 250.00},
-    {"account_no": "ACC10007802727", "balance": 3200.45},
-    {"account_no": "KTK10098373628", "balance": 780.80}
+    {"account_number": "HDFC10009234556", "balance": 500.75},
+    {"account_number": "SBI00094567291", "balance": 1500.20},
+    {"account_number": "YES10008282626", "balance": 250.00},
+    {"account_number": "ACC10007802727", "balance": 3200.45},
+    {"account_number": "KTK10098373628", "balance": 780.80}
 ]
 
 class Account(BaseModel):
@@ -32,7 +32,7 @@ def get_all_accounts():
 @app.get("/accounts/{account_number}")
 def get_balance(account_number: str):
     for account in accounts:
-        if account["account_no"] == account_number:
+        if account["account_number"] == account_number:
             return {"account_number": account_number, "balance": account["balance"]}
     raise HTTPException(status_code=404, detail="Account not found")
 
