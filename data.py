@@ -43,5 +43,9 @@ account_to_user_id={
     "PNB3877382920837":"user_id_2",
     "SBI0475985847842":"user_id_2"
 }
-account_no="HDFC1427987491378"
-print(users_by_id[account_to_user_id[account_no]]["accounts"][account_no]["balance"])
+
+
+for usr in users_by_id:
+        accs = users_by_id[usr]["accounts"]
+        for acc in accs:
+            print(acc)

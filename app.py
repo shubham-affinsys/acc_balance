@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
-from data import accounts
+from data import accounts,users_by_id,phone_to_user_id,account_to_user_id,cif_to_user_id
 
 #deployed on https://acc-balance.vercel.app/
 app = FastAPI()
@@ -23,7 +23,14 @@ class Account(BaseModel):
 
 @app.get("/accounts")
 def get_all_accounts():
-    return accounts
+    # return accounts
+    all_accs = []
+    for usr in users_by_id:
+        accs = users_by_id[usr]["accounts"]
+        for acc in accs:
+            all_accs.append(acc)
+    return all_accs
+
 
 @app.get("/accounts/{account_number}")
 def get_balance(account_number: str):
