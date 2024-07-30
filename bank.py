@@ -42,10 +42,7 @@ def get_all_users():
 
 @app.get("/users/{user_id}")
 def get_user(user_id:str):
-    all_users = []
-    for usr in users_by_id:
-        all_users.append(usr)
-    return all_users
+    return users_by_id[user_id]
 
 @app.get("/accounts/{account_number}")
 def get_balance(account_number: str):
