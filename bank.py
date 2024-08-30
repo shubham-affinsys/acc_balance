@@ -37,11 +37,7 @@ def get_all_accounts():
 
 @app.get("/users")
 def get_all_users():
-    # return accounts
-    all_users = []
-    for usr in users_by_id:
-        all_users.append(usr)
-    return all_users
+    return list(users_by_id)
 
 
 @app.get("/users/{user_id}")
