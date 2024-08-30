@@ -4,9 +4,7 @@ from pydantic import BaseModel
 
 from data import accounts, users_by_id
 
-# fastapi dev bank.py or
-# fastapi run bank.py
-# deployed on https://acc-balance.vercel.app/
+#deployed on https://acc-balance.vercel.app/
 app = FastAPI()
 
 app.add_middleware(
@@ -28,16 +26,20 @@ class Account(BaseModel):
 @app.get("/accounts")
 def get_all_accounts():
     # return accounts
-    all_accounts = []
+    all_accs = []
     for usr in users_by_id:
         ussr = users_by_id[usr]
-        all_accounts.append(ussr["accounts"])
-    return all_accounts
+        all_accs.append(ussr["accounts"])
+    return all_accs
 
 
 @app.get("/users")
 def get_all_users():
-    return list(users_by_id)
+    # return accounts
+    all_users = []
+    for usr in users_by_id:
+        all_users.append(usr)
+    return all_users
 
 
 @app.get("/users/{user_id}")
